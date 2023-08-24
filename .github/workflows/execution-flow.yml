@@ -1,0 +1,5 @@
+name: Website Deployment 
+on: 
+  push: 
+    branches:
+      - main
