@@ -36,7 +36,7 @@ jobs:
         id: run-tests
         run: npm run test
       - name: Upload test report 
-        if: failure() && steps.run-tests.outcome == 'failure'   #steps is context object supported by github
+        if: failure() && steps.run-tests.outcome == 'failure'   #steps is context object supported by github, if we don't use failure() the condition will skip because of default behavior that workflow will terminate if its have some failed step
         uses: actions/upload-artifact@v3
         with:
           name: test-report
@@ -75,3 +75,11 @@ jobs:
         run: ls
       - name: Deploy 
         run: echo "Deploying..."
+  report:
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output information
+        run: |
+          echo "Something went wrong"
+          echo "${{ github}}""
