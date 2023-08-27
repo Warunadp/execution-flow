@@ -10,7 +10,7 @@ jobs:
         include:    # Add single combination with the include key
           - node-version: 18
             operating-system: ubuntu-latest
-        exclude: 
+        exclude:    # Use include and exclude to add or remove some combination
           - node-version: 12
             operating-system: windows-latest
     runs-on: ${{ matrix.operating-system }}   # Run multiple jobs in parallel with different os
