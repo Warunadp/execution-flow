@@ -2,8 +2,9 @@ name: Matrix Demo
 on: push
 jobs: 
   build: 
+    continue-on-error: true   #Continue on error on job level tell github action to continue executing jobs that are related to this matrix even if some jobs for some combinations failed
     strategy: 
-      matrix: 
+      matrix:   # When using matrix if one job fails, the other jobs are canceled and skipped
         node-version: [12, 14, 16]    
         operating-system: [ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.operating-system }}   # Run multiple jobs in parallel with different os
