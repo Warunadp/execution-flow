@@ -7,6 +7,12 @@ jobs:
       matrix:   # When using matrix if one job fails, the other jobs are canceled and skipped
         node-version: [12, 14, 16]    
         operating-system: [ubuntu-latest, windows-latest]
+        include:    # Add single combination with the include key
+          - node-version: 18
+            operating-system: ubuntu-latest
+        exclude: 
+          - node-version: 12
+            operating-system: windows-latest
     runs-on: ${{ matrix.operating-system }}   # Run multiple jobs in parallel with different os
     steps:
       - name: Get Code 
